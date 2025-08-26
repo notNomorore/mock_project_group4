@@ -1,75 +1,249 @@
-<<<<<<< HEAD
-# mock_project_group4
-User Management System
-=======
-# Getting Started with Create React App
+# Authentication & Authorization System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hệ thống Authentication và Authorization hoàn chỉnh với JWT, Role-based Access Control, và tích hợp MockAPI.
 
-## Available Scripts
+## 🚀 Tính năng
 
-In the project directory, you can run:
+### Authentication
+- ✅ **Login/Logout**: UI đẹp với form validation
+- ✅ **User Registration**: Đăng ký tài khoản mới với validation
+- ✅ **JWT Authentication**: Token-based authentication
+- ✅ **Password Hashing**: bcryptjs mã hóa mật khẩu
+- ✅ **Auto-login**: Lưu token trong localStorage
+- ✅ **Token Validation**: Kiểm tra token khi refresh page
 
-### `npm start`
+### Authorization
+- ✅ **Role-based Access Control**: Phân quyền Admin/Staff
+- ✅ **Protected Routes**: Bảo vệ routes theo role
+- ✅ **Dynamic Navigation**: Menu thay đổi theo quyền
+- ✅ **Access Control**: Kiểm tra quyền khi CRUD operations
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- ✅ **React 19**: Sử dụng React hooks và context
+- ✅ **Responsive Design**: UI đẹp và mobile-friendly
+- ✅ **Form Validation**: Client-side validation
+- ✅ **Error Handling**: Xử lý lỗi gracefully
+- ✅ **Registration Form**: Form đăng ký với validation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- ✅ **Express Server**: RESTful API với middleware
+- ✅ **JWT Middleware**: Kiểm tra và validate tokens
+- ✅ **Role Middleware**: Kiểm tra quyền truy cập
+- ✅ **MockAPI Integration**: Tích hợp với external API
+- ✅ **Password Security**: bcryptjs hash và verify
+- ✅ **User Registration**: API đăng ký với validation
 
-### `npm test`
+## 🛠️ Cài đặt
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (v16+)
+- npm hoặc yarn
 
-### `npm run build`
+### Installation
+```bash
+# Clone repository
+git clone <repository-url>
+cd mock_project_group4
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Cài đặt dependencies
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Cài đặt dev dependencies
+npm install concurrently --save-dev
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Chạy ứng dụng
 
-### `npm run eject`
+### Development Mode (Frontend + Backend)
+```bash
+# Chạy cả frontend và backend
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Chạy riêng lẻ
+```bash
+# Chạy backend server
+npm run server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Chạy frontend (trong terminal khác)
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Production Build
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 URLs
 
-## Learn More
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+- **MockAPI**: https://68911551944bf437b59833cb.mockapi.io/users
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔐 Demo Credentials
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Admin Users
+```
+Email: an.nguyen@example.com
+Password: hashed_password_123
 
-### Code Splitting
+Email: dung.pham@example.com
+Password: hashed_password_321
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Email: h.tran@example.com
+Password: hashed_password_753
+```
 
-### Analyzing the Bundle Size
+### Staff Users
+```
+Email: binh.tran@example.com
+Password: hashed_password_456
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Email: em.dang@example.com
+Password: hashed_password_654
 
-### Making a Progressive Web App
+Email: g.nguyen@example.com
+Password: hashed_password_159
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📁 Cấu trúc dự án
 
-### Advanced Configuration
+```
+mock_project_group4/
+├── server.js                 # Backend Express server
+├── src/
+│   ├── components/
+│   │   ├── Login.js         # Login component
+│   │   ├── Login.css        # Login styles
+│   │   ├── Register.js      # Register component
+│   │   ├── Register.css     # Register styles
+│   │   ├── Dashboard.js     # Dashboard component
+│   │   ├── Dashboard.css    # Dashboard styles
+│   │   ├── ProtectedRoute.js # Route protection
+│   │   └── Home.js          # Home component
+│   ├── contexts/
+│   │   └── AuthContext.js   # Authentication context
+│   ├── App.js               # Main app component
+│   ├── App.css              # Global styles
+│   └── index.js             # Entry point
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔧 API Endpoints
 
-### Deployment
+### Authentication
+- `POST /api/auth/register` - Đăng ký tài khoản mới
+- `POST /api/auth/login` - Đăng nhập
+- `POST /api/auth/logout` - Đăng xuất
+- `GET /api/auth/me` - Lấy thông tin user hiện tại
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Users (Admin Only)
+- `GET /api/users` - Lấy danh sách users
+- `GET /api/users/:id` - Lấy user theo ID
+- `POST /api/users` - Tạo user mới
+- `PUT /api/users/:id` - Cập nhật user
+- `DELETE /api/users/:id` - Xóa user
 
-### `npm run build` fails to minify
+### Health Check
+- `GET /api/health` - Kiểm tra server status
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 6cc2899 (Initialize project using Create React App)
+## 🎯 Role-based Access
+
+### Admin Role
+- ✅ Truy cập tất cả features
+- ✅ Quản lý users (CRUD)
+- ✅ Xem thống kê tổng quan
+- ✅ Truy cập admin tools
+- ✅ Tạo tài khoản mới
+
+### Staff Role
+- ✅ Truy cập dashboard cơ bản
+- ✅ Xem thông tin cá nhân
+- ✅ Truy cập reports (nếu có)
+- ❌ Không thể quản lý users
+
+## 🔒 Security Features
+
+- **JWT Tokens**: Secure token-based authentication
+- **Password Hashing**: bcryptjs với salt rounds 12
+- **CORS Protection**: Cross-origin resource sharing
+- **Input Validation**: Client và server-side validation
+- **Role Verification**: Middleware kiểm tra quyền truy cập
+- **Email Uniqueness**: Kiểm tra email trùng lặp khi đăng ký
+
+## 🎨 UI/UX Features
+
+- **Modern Design**: Gradient backgrounds, shadows, animations
+- **Responsive Layout**: Mobile-first approach
+- **Interactive Elements**: Hover effects, transitions
+- **Loading States**: Spinners và loading indicators
+- **Error Handling**: User-friendly error messages
+- **Form Validation**: Real-time validation feedback
+
+## 🚀 Deployment
+
+### Backend
+```bash
+# Set environment variables
+export PORT=5000
+export JWT_SECRET=your-secret-key
+
+# Start server
+npm run server
+```
+
+### Frontend
+```bash
+# Build production
+npm run build
+
+# Serve static files
+npx serve -s build
+```
+
+## 🧪 Testing
+
+```bash
+# Run tests
+npm test
+
+# Run tests with coverage
+npm test -- --coverage
+```
+
+## 📝 Notes
+
+- **MockAPI**: Sử dụng external API để demo
+- **Password Security**: bcryptjs hash với salt rounds 12
+- **JWT Secret**: Thay đổi trong production
+- **CORS**: Cấu hình cho development
+- **Registration**: Tự động tạo JWT token sau khi đăng ký
+
+## 🔐 Password Security
+
+### Hashing Algorithm
+- **bcryptjs**: Sử dụng salt rounds 12
+- **Salt**: Tự động tạo salt unique cho mỗi password
+- **Verification**: So sánh password với hash đã lưu
+
+### Security Features
+- **Brute Force Protection**: Salt rounds làm chậm brute force attacks
+- **Rainbow Table Protection**: Salt unique cho mỗi password
+- **Industry Standard**: bcrypt là industry standard cho password hashing
+
+## 🤝 Contributing
+
+1. Fork repository
+2. Tạo feature branch
+3. Commit changes
+4. Push to branch
+5. Tạo Pull Request
+
+## 📄 License
+
+MIT License - xem file LICENSE để biết thêm chi tiết.
+
+## 🆘 Support
+
+Nếu có vấn đề, vui lòng tạo issue hoặc liên hệ team development.

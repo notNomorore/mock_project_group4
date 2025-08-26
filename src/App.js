@@ -1,24 +1,133 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import ChangePassword from './components/ChangePassword';
+import Dashboard from './components/Dashboard';
+import Home from './components/Home';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
+import Register from './components/Register';
+import UserManagement from './components/UserManagement';
+import TaskManagement from './components/TaskManagement';
+import ProjectManagement from './components/ProjectManagement';
+import DocumentCenter from './components/DocumentCenter';
+import Analytics from "./components/Analytics";
+import { AuthProvider } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              
+              {/* Protected routes */}
+              <Route 
+                path="/dashboard" 
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/profile" 
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/change-password" 
+                element={
+                  <ProtectedRoute>
+                    <ChangePassword />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              {/* Admin only routes */}
+              <Route 
+                path="/admin" 
+                element={
+                  <ProtectedRoute requireAdmin={true}>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              <Route 
+                path="/user-management" 
+                element={
+                  <ProtectedRoute requireAdmin={true}>
+                    <UserManagement />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route
+                path="/analytics"
+                element={
+                  <ProtectedRoute requireAdmin={true}>
+                    <Analytics />
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* Admin & Staff routes */}
+              <Route 
+                path="/tasks" 
+                element={
+                  <ProtectedRoute>
+                    <TaskManagement />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/projects" 
+                element={
+                  <ProtectedRoute>
+                    <ProjectManagement />
+                  </ProtectedRoute>
+                } 
+              />
+
+              <Route 
+                path="/documents" 
+                element={
+                  <ProtectedRoute>
+                    <DocumentCenter />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              {/* Staff routes */}
+              <Route 
+                path="/staff" 
+                element={
+                  <ProtectedRoute requireStaff={true}>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } 
+              />
+              
+              {/* Catch all - redirect to home */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </div>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
