@@ -9,7 +9,7 @@ import {
   LineChart, Line,
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar
 } from "recharts";
-import "./Analytics.css";
+
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#aa46be", "#ff6699"];
 
